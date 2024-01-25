@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document Locker</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="styles1.css">
+  <style>
+    
+
+    .container-2 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px;
+      position: absolute;
+      top: 45%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+      width: 70%;
+    }
+
+    #documentTable {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    #documentTable th,
+    #documentTable td {
+      padding: 10px;
+      text-align: center;
+    }
+
+    #documentTable th {
+      background-color: #4dd4a4;
+      color: #fff;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header">
+    <h1>Secure system</h1>
+    <button id="profileBtn" class="btn btn-primary">
+      <i class="fas fa-user" id="userProfileIcon"></i> User Profile
+    </button>
+  </div>
+
+  <nav class="navbar navbar-dark bg-dark d-md-none">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <div id="sidebar" class="collapse d-md-block">
+    <h3 class="mt-3">Dashboard</h3>
+    <br>
+    <a href="home_dashboard.html"><i class="fas fa-home"></i> HOME</a>
+    <br>
+    <a href="document_Locker.html"><i class="fas fa-file"></i> Document Locker</a>
+    <br>
+    <a href="mail-password-locker.html"><i class="fas fa-envelope"></i> Mail & Password Locker</a>
+    <br>
+    <a href="bank-account-locker.html"><i class="fas fa-university"></i> Bank Account Locker</a>
+    <br>
+    <a href="videos-locker.html"><i class="fas fa-video"></i> Videos Locker</a>
+    <br>
+    <a href="images-locker.html"><i class="fas fa-images"></i> Images Locker</a>
+    <br>
+    <a href="music-locker.html"><i class="fas fa-music"></i> Music Locker</a>
+    <br>
+  </div>
+
+  <div class="container" id="uploadForm">
+    <h2>Document Upload</h2>
+    <form id="documentUploadForm">
+      <div id="step1">
+        <label for="documentName">Document Name:</label>
+        <input type="text" id="documentName" name="documentName" required="">
+        <label for="documentType">Select Document Type:</label>
+        <select id="documentType" name="documentType" required="">
+          <option value=".pdf">.pdf</option>
+          <option value=".doc">.doc</option>
+          <option value=".docx">.docx</option>
+          <option value=".txt">.txt</option>
+          <option value=".rtf">.rtf</option>
+          <option value=".wpd">.wpd</option>
+          <option value=".ppt">.ppt</option>
+          <option value=".pptx">.pptx</option>
+        </select>
+      </div>
+      <div id="step2">
+        <label for="documentFile">Choose File:</label>
+        <input type="file" id="documentFile" name="documentFile" accept=".pdf, .doc, .docx, .txt, .rtf,.wpd,.ppt,.pptx" required="">
+      </div>
+      <center><button type="button" onclick="uploadDocument()">Upload Document</button></center>
+    </form>
+  </div>
+
+  <div class="container-2" id="documentTableContainer">
+    <h2>Uploaded Documents</h2>
+    <table id="documentTable" class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Document Name</th>
+          <th>Document Type</th>
+          <th>File</th>
+        </tr>
+      </thead>
+      <tbody id="documentTableBody">
+        <!-- Document rows will be added dynamically here -->
+      </tbody>
+    </table>
+  </div>
+
+  <footer class="fixed-bottom">
+    <center>Copyright &copy; Securesystem.com All rights Reserved.</center>
+  </footer>
+
+  <script>
+    function uploadDocument() {
+      // Get form values
+      const documentName = document.getElementById("documentName").value;
+      const documentType = document.getElementById("documentType").value;
+      const documentFile = document.getElementById("documentFile").value;
+
+      // Add a new row to the table
+      const tableBody = document.getElementById("documentTableBody");
+      const newRow = tableBody.insertRow();
+      newRow.innerHTML = `<td>${documentName}</td><td>${documentType}</td><td><a href="${documentFile}" target="_blank">View</a></td>`;
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: lavender;
+      margin: 0;
+      padding: 0;
+    }
+
+    #header {
+      background-color: #4dd4a4;
+      color: #fff;
+      padding: 10px;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #userProfileIcon {
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    #sidebar {
+      height: 100vh;
+      background-color: #000000;
+      color: #fff;
+      width: 200px;
+      position: fixed;
+      transition: width 0.3s;
+    }
+
+    #sidebar.collapsed {
+      width: 70px;
+    }
+
+    #sidebar a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #fff;
+      transition: background-color 0.3s;
+    }
+
+    #sidebar a:hover {
+      background-color: #495057;
+    }
+
+    #content {
+      margin-left: 250px;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 10px;
+      position: absolute;
+      top: 20%;
+      left: 55%;
+      transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="header">
+    <h1>Secure system</h1>
+    <button id="profileBtn" class="btn btn-primary">
+      <i class="fas fa-user" id="userProfileIcon"></i> User Profile
+    </button>
+    
+  </div>
+  
+
+
+  <nav class="navbar navbar-dark bg-dark d-md-none">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sidebar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav>
+
+  <div id="sidebar" class="collapse d-md-block">
+    <h3 class="mt-3">Dashboard</h3>
+    <br>
+    <a href="home_dashboard.html"><i class="fas fa-home"></i> HOME</a>
+    <br>
+    <a href="document_Locker.html"><i class="fas fa-file"></i> Document Locker</a>
+    <br>
+    <a href="mail-password-locker.html"><i class="fas fa-envelope"></i> Mail & Password Locker</a>
+    <br>
+    <a href="bank-account-locker.html"><i class="fas fa-university"></i> Bank Account Locker</a>
+    <br>
+    <a href="videos-locker.html"><i class="fas fa-video"></i> Videos Locker</a>
+    <br>
+    <a href="images-locker.html"><i class="fas fa-images"></i> Images Locker</a>
+    <br>
+    <a href="music-locker.html"><i class="fas fa-music"></i> Music Locker</a>
+    <br>
+  </div>
+  
+
+  <div class="container" id="uploadForm">
+    <h2>Document Upload</h2>
+    <form id="documentUploadForm">
+      <div id="step1">
+        <label for="documentName">Document Name:</label>
+        <input type="text" id="documentName" name="documentName" required="">
+        <label for="documentType">Select Document Type:</label>
+        <select id="documentType" name="documentType" required="">
+          <option value=".pdf">.pdf</option>
+          <option value=".doc">.doc</option>
+          <option value=".docx">.docx</option>
+          <option value=".txt">.txt</option>
+          <option value=".rtf">.rtf</option>
+          <option value=".wpd">.wpd</option>
+          <option value=".ppt">.ppt</option>
+          <option value=".pptx">.pptx</option>
+      </select>
+      <div id="step2">
+        <label for="documentFile">Choose File:</label>
+        <input type="file" id="documentFile" name="documentFile" accept=".pdf, .doc, .docx, .txt, .rtf,.wpd,.ppt,.pptx" required="">
+      </div>
+        <center><button type="button" onclick="uploadDocument()">Upload Document</button> </center>
+      </div>
+    </form>
+  </div>
+  <footer class="fixed-bottom">
+    <center>Copyright &copy; Securesystem.com All rights Reserved.</center>
+  </footer>
+
+</body>
+
+</html>
